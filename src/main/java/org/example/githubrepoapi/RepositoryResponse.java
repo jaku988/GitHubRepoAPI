@@ -5,12 +5,12 @@ import java.util.List;
 public class RepositoryResponse {
 
     private String name;
-    private String owner_login;
+    private String ownerLogin;
     private List<GitHubBranch> branches;
 
-    public RepositoryResponse(String name, String owner_login, List<GitHubBranch> branches) {
+    public RepositoryResponse(String name, String ownerLogin, List<GitHubBranch> branches) {
         this.name = name;
-        this.owner_login = owner_login;
+        this.ownerLogin = ownerLogin;
         this.branches = branches;
     }
 
@@ -18,8 +18,8 @@ public class RepositoryResponse {
         return name;
     }
 
-    public String getOwner_login() {
-        return owner_login;
+    public String getOwnerLogin() {
+        return ownerLogin;
     }
 
     public List<GitHubBranch> getBranches() {

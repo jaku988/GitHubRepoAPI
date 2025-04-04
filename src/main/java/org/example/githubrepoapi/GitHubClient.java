@@ -14,13 +14,13 @@ import java.util.*;
 @RequiredArgsConstructor
 public class GitHubClient {
 
-    private final String reposUrl = "https://api.github.com/users/%s/repos";
-    private final String branchesUrl = "https://api.github.com/repos/%s/%/branches";
+    private final String GITHUB_API_URL = "https://api.github.com/users/%s/repos";
+    private final String GITHUB_BRANCHES_URL = "https://api.github.com/repos/%s/%s/branches";
     private final RestTemplate restTemplate;
 
     public List<GitHubRepository> fetchUserRepositories(String username){
 
-        String url = String.format(reposUrl, username);
+        String url = String.format(GITHUB_API_URL, username);
         ResponseEntity<GitHubRepository[]> response = restTemplate.getForEntity(url, GitHubRepository[].class);
 
         try{
@@ -29,6 +29,20 @@ public class GitHubClient {
                     .map(Arrays::asList)
                     .orElse(Collections.emptyList());
 
+        }catch(HttpClientErrorException | HttpServerErrorException e){
+            throw new CustomHttpException(e.getMessage(), e.getStatusCode().value());
+        }
+    }
+
+    public List<GitHubBranch> fetchUserBranches(String username, String repositoryName){
+        String url = String.format(GITHUB_BRANCHES_URL, username, repositoryName);
+
+        try{
+            ResponseEntity<GitHubBranch[]> branches = restTemplate.getForEntity(url, GitHubBranch[].class);
+
+            return Optional.ofNullable(branches.getBody())
+                    .map(Arrays::asList)
+                    .orElse(Collections.emptyList());
         }catch(HttpClientErrorException | HttpServerErrorException e){
             throw new CustomHttpException(e.getMessage(), e.getStatusCode().value());
         }
