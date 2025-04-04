@@ -21,9 +21,8 @@ public class GitHubClient {
     public List<GitHubRepository> fetchUserRepositories(String username){
 
         String url = String.format(GITHUB_API_URL, username);
-        ResponseEntity<GitHubRepository[]> response = restTemplate.getForEntity(url, GitHubRepository[].class);
-
         try{
+            ResponseEntity<GitHubRepository[]> response = restTemplate.getForEntity(url, GitHubRepository[].class);
 
             return Optional.ofNullable(response.getBody())
                     .map(Arrays::asList)

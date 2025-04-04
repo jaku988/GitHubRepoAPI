@@ -2,8 +2,8 @@ package org.example.githubrepoapi;
 
 public class GitHubBranch {
 
-    private String name;
-    private String lastCommitSha;
+    private final String name;
+    private final String lastCommitSha;
 
     public GitHubBranch(String name, String lastCommitSha) {
         this.name = name;
