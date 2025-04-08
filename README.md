@@ -1,7 +1,7 @@
 # GitHub Repo API
 
 
-## <b><u>English</u></b>
+## 📖<b><u>English</u></b>
 A simple Spring Boot REST API that fetches public, non-fork repositories for a given GitHub user.  
 It returns the repository name, owner's login, and a list of branches with the last commit SHA.
 Application works on endpoint: GET /api/github/repositories/{username}
@@ -49,7 +49,7 @@ localhost:8080/api/github/repositories/{username}
 ]
 ```
 
-## <b><u>Polski</u></b>
+## 📖<b><u>Polski</u></b>
 
 Prosta aplikacja REST API stworzona w Spring Boot, która pobiera publiczne repozytoria użytkownika GitHub (z pominięciem forków).  
 Zwraca nazwę repozytorium, login właściciela oraz listę gałęzi z ostatnim SHA commita.  
@@ -58,11 +58,10 @@ Aplikacja działa pod endpointem: `GET /api/github/repositories/{username}`
 ## 🛠 Wykorzystane technologie
 
 - Java 21
+- REST API
 - Spring Boot
 - Spring Web
 - Spring Test (MockMvc)
-- JUnit 5
-- Mockito
 
 ## 🔧 Jak uruchomić projekt
 
