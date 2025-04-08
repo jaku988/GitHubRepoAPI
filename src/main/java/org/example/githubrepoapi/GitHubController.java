@@ -18,6 +18,9 @@ public class GitHubController {
 
     @GetMapping("/repositories/{username}")
     public ResponseEntity<List<RepositoryResponse>> getRepositories(@PathVariable("username") String username) {
+        if (!username.matches("^[a-zA-Z0-9-]+$")) {
+            throw new CustomHttpException("Invalid username", 400);
+        }
         List<RepositoryResponse> repositories = gitHubService.getUserRepositories(username);
         return ResponseEntity.ok(repositories);
     }
